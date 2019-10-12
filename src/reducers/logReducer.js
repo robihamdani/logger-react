@@ -46,6 +46,12 @@ export default (state = initialState, action) => {
         loading: true
       };
 
+    case SEARCH_LOGS:
+      return {
+        ...state,
+        logs: action.payload
+      };
+
     case LOGS_ERROR:
       return {
         ...state,
@@ -70,12 +76,6 @@ export default (state = initialState, action) => {
         logs: state.logs.map(log =>
           log.id === action.payload.id ? action.payload : log
         )
-      };
-
-    case SEARCH_LOGS:
-      return {
-        ...state,
-        logs: action.payload
       };
 
     default:

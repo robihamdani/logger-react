@@ -10,25 +10,11 @@ import {
   SEARCH_LOGS
 } from "../types";
 
-// export const getLogs = () => {
-//   return async dispatch => {
-//     setLoading();
-
-//     const res = await fetch("/logs");
-//     const data = await res.json();
-
-//     dispatch({
-//       type: GET_LOGS,
-//       payload: res.data
-//     });
-//   };
-// };
-
-export const getLogs = () => async dispatch => {
+export const getLogs = text => async dispatch => {
   try {
     setLoading();
 
-    const res = await fetch("/logs");
+    const res = await fetch(`/logs`);
     const data = await res.json();
 
     dispatch({
@@ -134,7 +120,7 @@ export const searchLogs = text => async dispatch => {
   try {
     setLoading();
 
-    const res = await fetch(`/logs?=${text}`);
+    const res = await fetch(`/logs?q=${text}`);
     const data = await res.json();
 
     dispatch({
